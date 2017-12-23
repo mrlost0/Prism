@@ -5,9 +5,9 @@ exports.run = async(bot, message, args) => {
     
     let user = message.mentions.users.first() || message.author
 let member = message.guild.member(user)
-let roles = member.roles.array().slice(1).sort((a, b) => a.comparePositionTo(b)).reverse().map(role => role.name);
+let roles = member.roles.array().slice(1).sort((a, b) => a.comparePositionTo(b)).reverse().map(role => `<@&${role.id}>`);
 let messageauthor = message.guild.member(message.author)
-let authorroles = message.guild.member(message.author).roles.array().slice(1).sort((a, b) => a.comparePositionTo(b)).reverse().map(role => role.name)
+let authorroles = message.guild.member(message.author).roles.array().slice(1).sort((a, b) => a.comparePositionTo(b)).reverse().map(role => `<@&${role.id}>`)
 if (roles.length < 1) roles = ['None']
 const status = {
    online: 'Online', 
@@ -57,7 +57,7 @@ const status = {
   .addField("***Last Message*** :speech_left:", `***>***__${lastmsg}__`, true)
   .addField(`***Joined ${message.guild.name} On*** :heavy_plus_sign:`, `***>***__${dateformat(member.joinedAt, "***mmmm dS, yyyy***, On a ***dddd***, ***h:MM:ss TT, Z***")}__`, true)
   .addField("***Playing*** :video_game:", `***>***__${game}__`, true)
-  .addField("***Roles*** :scroll:", `***>***__${roles.join(', ')}__`, true)
+  .addField("***Roles*** :scroll:", `***>***${roles.join(', ')}`, true)
   .addField("***Bot?*** :robot:", `***>***__${botuser}__`, true)
   message.channel.send({ embed: embed })
   return;
@@ -99,7 +99,7 @@ message.channel.send({embed});
   .addField("***Last Message*** :speech_left:", `***>***__${lastmsg}__`, true)
   .addField(`***Joined ${message.guild.name} On*** :heavy_plus_sign:`, `***>***__${dateformat(member.joinedAt, "***mmmm dS, yyyy***, On a ***dddd***, ***h:MM:ss TT, Z***")}__`, true)
   .addField("***Playing*** :video_game:", `***>***__${game}__`, true)
-  .addField("***Roles*** :scroll:", `***>***__${roles.join(', ')}__`, true)
+  .addField("***Roles*** :scroll:", `***>***${roles.join(', ')}`, true)
   .addField("***Bot?*** :robot:", `***>***__${botuser}__`, true)
 message.channel.send({embed});
     }
