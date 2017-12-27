@@ -3,6 +3,11 @@ const Discord = require("discord.js");
 
 exports.run = (bot, message, args) => {
     
+    if (message.author.id === "225991638307045378") {
+        message.channel.send("***Sorry, but you are not allowed to use this command, Here is why: http://prntscr.com/hs6vpi :wink:***")
+        return;
+    }
+    
     google.resultsPerPage = 25
     let object = args;
     google.protocol = 'https';
