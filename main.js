@@ -209,6 +209,10 @@ bot.on("ready", async (err) => {
 });
 bot.on("message", async message => {
     if(message.author.bot) return;
+	if (message.author.id === "225991638307045378") {
+        message.channel.send("***Sorry, but you are not allowed to use this command, Here is why: http://prntscr.com/hs6vpi :wink:***")
+        return;
+    }
     
      if(message.channel.type === "dm") {
         var embed = new Discord.RichEmbed()
