@@ -1,6 +1,7 @@
 // > Requirements
 const Discord = require("discord.js");
 const botsettings = require("./Storage/botsettings.json");
+ // I'm just going off of my main.js and putting everything in here then we move ALL the commands we had into here
 const key = process.env.YOUTUBE_API_KEY;
 const fs = require("fs");
 const colors = require('colors');
@@ -209,10 +210,6 @@ bot.on("ready", async (err) => {
 });
 bot.on("message", async message => {
     if(message.author.bot) return;
-	if (message.author.id === "225991638307045378") {
-        message.channel.send("***Sorry, but you are not allowed to use this command, Here is why: http://prntscr.com/hs6vpi :wink:***")
-        return;
-    }
     
      if(message.channel.type === "dm") {
         var embed = new Discord.RichEmbed()
@@ -236,10 +233,31 @@ bot.on("message", async message => {
     if(cmd) cmd.run(bot, message, args, queue);
 });
 
+bot.on("message", message => {
+	if (message.content.startsWith("pr!channel")) {
+		    var embed = new Discord.RichEmbed()
+    .setTitle("<:added:394910274177597491> Added Channel! <:added:394910274177597491>")
+    .setColor("#3399ff")
+    .setTimestamp()
+    .setThumbnail(message.guild.iconURL)
+    .addField("A new channel has been __Created__ in **GUILD_NAME**", `It has been created on***${require('dateformat')(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss TT, Z")}***`)
+    .addField("It was created by **CHANNEL_AUTHOR**", `We now have __**${bot.channels.size}**__ channels!`)
+    message.channel.send({ embed: embed });
+}
+if (message.content.startsWith("pr!delete")) {
+	var embed = new Discord.RichEmbed()
+	.setTitle("<:removed:394913338888290307> Deleted Message! <:removed:394913338888290307>")
+	.setColor("#ff4040")
+	.setTimestamp()
+	.setThumbnail(message.author.displayAvatarURL)
+	.addField("A message has been __Deleted__ by __**MESSAGE_AUTHOR**__", `It has been deleted in ***GUILD_NAME***`)
+	.addField(`It was deleted on __${require('dateformat')(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss TT, Z")}__`, "The Deleted message's server owner is **GUILD_OWNER**")
+	message.channel.send({ embed: embed })
+}
+});
 process.on('unhandledRejection', error => {
     console.log(`Unhandled Error Found! \n ${error.stack}`)
 });
-
 
 
 

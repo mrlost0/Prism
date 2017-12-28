@@ -1,6 +1,5 @@
 const osu = require("node-osu");
-const osuApi = new osu.Api("bfccef509fc4dcc3824dee3a1a72e6e5d2c598c4")
-// const osuApi = new osu.Api(process.env.OSU_API_KEY);
+const osuApi = new osu.Api(process.env.OSU_API_KEY);
 
 exports.run = async (bot, message, args) => {
     function numberWithCommas(x) {

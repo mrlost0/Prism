@@ -28,6 +28,9 @@ const status = {
  if (user.presence.status === "offline") {
      emoji = "<:offline:394178762729848846>"
  }
+ if (user.presence.game.url.includes("twitch.tv")) {
+     emoji = "<:streaming:395617090293334016>"
+ }
  let game = user.presence.game && user.presence.game && user.presence.game.name
  if (!game) {
      game = "User is not playing a game"
@@ -52,7 +55,7 @@ const status = {
   .setThumbnail(`${user.displayAvatarURL}`)
   .addField("***Username and Discriminator*** :name_badge:", `***>***__${user.tag}__`)
   .addField("***ID*** :id:", `***>***__${user.id}__`)
-  .addField("***Created Account On*** :heavy_plus_sign:", `***>***__${dateformat(user.createdAt, "***mmmm dS, yyyy***, On a ***dddd***, ***h:MM:ss TT, Z***")}__`)
+  .addField("***Created Account On*** <:added:394910274177597491>", `***>***__${dateformat(user.createdAt, "***mmmm dS, yyyy***, On a ***dddd***, ***h:MM:ss TT, Z***")}__`)
   .addField(`***Status*** ${emoji}`, `***>***__${status[user.presence.status]}__`, true)
   .addField("***Last Message*** :speech_left:", `***>***__${lastmsg}__`, true)
   .addField(`***Joined ${message.guild.name} On*** :heavy_plus_sign:`, `***>***__${dateformat(member.joinedAt, "***mmmm dS, yyyy***, On a ***dddd***, ***h:MM:ss TT, Z***")}__`, true)
@@ -64,18 +67,15 @@ const status = {
     }
     
   if (!user) {
-      var lastmsg = message.author.lastMessage;
-  	if(message.embeds.length === 1) {
-  	    lastmsg = "Message was an **Embed**"
-  	}
+
   	
 let embed = new Discord.RichEmbed()
 .setTitle("**__Userinfo__**")
   .setColor(randomColor)
   .setThumbnail(`${message.author.displayAvatarURL}`)
-  .addField("***Username and Discriminator*** <:user:393801653486354452>", `***>***__${message.author.tag}__`)
+  .addField("***Username and Discriminator*** <:added:394910274177597491>", `***>***__${message.author.tag}__`)
   .addField("***ID*** :id:", `***>***__${message.author.id}__`, true)
-  .addField("***Created At*** <:added_user:393802707267354645>", `***>***${message.author.createdAt}`)
+  .addField("***Created At*** <:added:394910274177597491>", `***>***${message.author.createdAt}`)
   .addField(`***Joined __${message.guild.name}__ On*** <:added_user:393802707267354645>`, `***>***__${messageauthor.joinedAt}__`)
   .addField("Status", `${status[message.author.presence.status]}`, true)
   .addField("Last Message", `${(lastmsg) || 'Has not said a message yet.'}`, true)
@@ -86,6 +86,7 @@ let embed = new Discord.RichEmbed()
   .addField("Wait", "Why is t")
 message.channel.send({embed});
 } else {
+    console.log(user.presence)
 	let botuser;
   if (member.user.bot === true) botuser = 'Yes'
   else botuser = 'No'
