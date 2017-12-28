@@ -74,6 +74,7 @@ exports.run = (bot, message, args) => {
             .setTitle(":warning: Google Command DANGER! :warning:")
             .setColor("#ff0000")
             .setTimestamp()
+            .setThumbnail(message.author.displayAvatarURL)
             .addField(":eyes: Someone used the Google Command to search up something bad! :eyes:", "Hopefully this was a mis-understanding!")
             .addField(":mag: What they searched up :mag:", `***__${args2}__***`)
             .addField(":man: Message Author :woman:", `***__${message.author.tag}__***`)
