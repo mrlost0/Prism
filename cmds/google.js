@@ -56,7 +56,7 @@ exports.run = (bot, message, args) => {
             test3 = "Nothing Found, Sorry";
         }
         const log = bot.channels.get("395639215578284033")
-                var blacklisted = ["porn", "sex", "gay porn", "pussy", "dick", "vagina", "penis", "incest", "loli", "lesbian porn", "pornhub", "xxvideos", "xrated", "exclipt", "x-rated", "moan", "masturbat", "condom", "dildo", "fingering", "tribbing", "oraljob", "blowjob", "anal", "fuck", "hentai", "rule34", "r34", "shit", "sh1t", "knobend", "knob end", "cock", "blow job", "boob", "cunt", "labia", "nigger", "nigga", "twat", "whore"]
+                var blacklisted = ["porn", "sex", "gay porn", "pussy", "dick", "vagina", "penis", "incest", "loli", "lesbian porn", "pornhub", "xxvideos", "xrated", "exclipt", "x-rated", "moan", "masturbat", "condom", "dildo", "fingering", "tribbing", "oraljob", "blowjob", "anal", "fuck", "hentai", "rule34", "r34", "shit", "sh1t", "knobend", "knob end", "cock", "blow job", "boob", "cunt", "labia", "nigger", "nigga", "twat", "whore", "cum", "creampie", "milf", "smut", "deepthroat", "deep throat", "gaiagraphy", "bastard", "wank", "ass", "butt", "slut", "clit"]
         if (blacklisted.some(word => args2.toLowerCase().includes(word) && !message.channel.nsfw)) {
             message.delete()
             const embed = new Discord.RichEmbed()
