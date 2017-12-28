@@ -1,6 +1,8 @@
 const prefixes = require("../Storage/prefixes.json");
 const botsettings = require("../Storage/botsettings.json");
 const Discord = require("discord.js");
+const opus = require("node-opus");
+const gyp = require("node-gyp");
 const key = process.env.YOUTUBE_API_KEY
 const fs = require("fs"); 
 const colors = require('colors');
@@ -8,6 +10,7 @@ const moment = require('moment');
 const yt = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube(key);
+
 
 exports.run = async(bot, message, args, queue) => {
   const prefix = prefixes[message.guild.id].prefix;  
@@ -17,13 +20,14 @@ exports.run = async(bot, message, args, queue) => {
   const serverQueue = queue.get(message.guild.id);
 
     if (!serverQueue) return message.channel.send('There is nothing playing! Add some music to play using: pr!play [song-name]');
-    return message.channel.send(`
-__**Song queue:**__ 
-
-${serverQueue.songs.map(song => `**-** ${song.title}`).slice(0, 16).join('\n')}
- 
-**Now playing:** ${serverQueue.songs[0].title}
-    `);
+    
+    const queueInfo = new Discord.RichEmbed()
+    .setTitle("Song Queue")
+    .setDescription(`${serverQueue.songs.map(song => `**-** ${song.title}`).slice(0, 16).join('\n')}`)
+    .setFooter("Currently Playing: " + serverQueue.songs[0].title)
+    .setColor("#503d82")
+    
+    return message.channel.send({embed: queueInfo});
 
     // > Functions
 

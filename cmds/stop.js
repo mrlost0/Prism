@@ -8,6 +8,8 @@ const moment = require('moment');
 const yt = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube(key);
+const opus = require("node-opus");
+const gyp = require("node-gyp");
 
 exports.run = async(bot, message, args, queue) => {
   const prefix = prefixes[message.guild.id].prefix;  

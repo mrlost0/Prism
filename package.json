@@ -1,5 +1,5 @@
 {
-  "name": "Snap",
+  "name": "Prism",
   "version": "1.0.0",
   "description": "Not associated with snapchat",
   "main": "bot.js",
@@ -48,6 +48,8 @@
     "moment-duration-format": "^1.3.0",
     "moment-timezone": "^0.5.13",
     "nicejob": "^1.0.1",
+    "node-gyp": "^3.6.2",
+    "node-opus": "^0.2.7",
     "node-osu": "^1.3.0",
     "node-youtubeapi-simplifier": "^1.4.2",
     "opusscript": "0.0.3",

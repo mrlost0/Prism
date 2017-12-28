@@ -8,6 +8,8 @@ const moment = require('moment');
 const yt = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube(key);
+const opus = require("node-opus");
+const gyp = require("node-gyp");
 
 exports.run = async(bot, message, args, queue) => {
   const prefix = prefixes[message.guild.id].prefix
@@ -17,7 +19,12 @@ exports.run = async(bot, message, args, queue) => {
   const serverQueue = queue.get(message.guild.id);
 
     if (!serverQueue) return message.channel.send("There isn't anything playing");
-    return message.channel.send(`🎶 Currently playing: **${serverQueue.songs[0].title}**`);
+    return message.channel.send({
+            embed: {
+                color: 0x503d82,
+                description: `:notes: Currently Playing: **${serverQueue.songs[0].title}**`
+            }
+        })
  
     // Time for the functions
 

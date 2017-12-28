@@ -7,6 +7,8 @@ const moment = require("moment");
 const yt = require("ytdl-core");
 const YouTube = require("simple-youtube-api");
 const youtube = new YouTube(key);
+const opus = require("node-opus");
+const gyp = require("node-gyp");
 
 exports.run = async(bot, message, args, queue) => {
     const args1 = message.content.split(' ');
@@ -39,24 +41,32 @@ const voiceChannel = message.member.voiceChannel;
         try {
           var videos = await youtube.searchVideos(searchString, 10);
           let index = 0;
-          let msgtoDelete = await message.channel.send(`
-__**Song selection:**__
-
-${videos.map(video2 => `**${++index} -** ${video2.title}`).join('\n')}
-
-Please provide a value to select one of the search results ranging from 1-10.
-          `);
+          
+          
+          const Embed2 = new Discord.RichEmbed()
+          .setTitle(":musical_note: Song Selection :musical_note:")
+          .setDescription(videos.map(video2 => `**${++index} -** ${video2.title}`).join('\n'))
+          .setColor("#503d82")
+          .setFooter("Please provide a value to select one of the search results ranging from 1-10.")
+          
+          
+          let msgtoDelete = await message.channel.send({embed: Embed2});
           // eslint-disable-next-line max-depth
           try {
             var response = await message.channel.awaitMessages(message2 => message2.content > 0 && message2.content < 11, {
               maxMatches: 1,
-              time: 15000,
+              time: 10000,
               errors: ['time']
             });
             msgtoDelete.delete();
           } catch (err) {
             console.error(err);
-            return message.channel.send('No or invalid value entered, cancelling video selection.');
+            const noPick = new Discord.RichEmbed()
+            .setDescription("No or invalid value entered, cancelling video selection.")
+            .setColor("#503d82")
+            message.channel.send({embed: noPick});
+            msgtoDelete.delete()
+            return;
           }
           const videoIndex = parseInt(response.first().content);
           var video = await youtube.getVideoByID(videos[videoIndex - 1].id);
