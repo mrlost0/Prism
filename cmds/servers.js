@@ -1,7 +1,7 @@
 const _discord = require('discord.js')
 
 exports.run = (bot, message, args) => {
-	var authors = ["265279363199533068", "262410813254402048"];
+	var authors = ["396027480097554432", "262410813254402048"];
     if(!authors.includes(message.author.id)) {
 		const guilds = bot.guilds.map(g=>`${g.name} :: ${g.owner.user.username} :: ${g.members.size} users :: ${g.channels.size} channels`).join('\n')
 		message.channel.send(`= Prisim's Servers =\n [Guild Name :: Guild Owner :: Guild Member Size :: Guild Channels Size] \n \n ${guilds}`, {code:'asciidoc'});

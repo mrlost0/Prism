@@ -28,7 +28,7 @@ const status = {
  if (user.presence.status === "offline") {
      emoji = "<:offline:394178762729848846>"
  }
-
+ 
  let game = user.presence.game && user.presence.game && user.presence.game.name
  if (!game) {
      game = "User is not playing a game"
@@ -38,7 +38,7 @@ const status = {
   else botuser = 'No'
   const randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
   
-  var authors = ["262410813254402048", "265279363199533068"]
+  var authors = ["262410813254402048", "396027480097554432"]
       if (authors.includes(message.author.id && user.id)) {
                 var lastmsg = user.lastMessage;
                 if (!lastmsg) {

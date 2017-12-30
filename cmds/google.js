@@ -1,7 +1,12 @@
 const google = require("google");
 const Discord = require("discord.js");
+const blacklist = require('../Storage/blacklist.json');
 
 exports.run = (bot, message, args) => {
+    if (blacklist[message.author.id]) {
+        message.channel.send("Im sorry, but you are blacklisted from using this command due to searching up pornography!")
+        return;
+    }
     
     google.resultsPerPage = 25
     let object = args;
@@ -56,7 +61,7 @@ exports.run = (bot, message, args) => {
             test3 = "Nothing Found, Sorry";
         }
         const log = bot.channels.get("395639215578284033")
-                var blacklisted = ["porn", "sex", "gay porn", "pussy", "dick", "vagina", "penis", "incest", "loli", "lesbian porn", "pornhub", "xxvideos", "xrated", "exclipt", "x-rated", "moan", "masturbat", "condom", "dildo", "fingering", "tribbing", "oraljob", "blowjob", "anal", "fuck", "hentai", "rule34", "r34", "shit", "sh1t", "knobend", "knob end", "cock", "blow job", "boob", "cunt", "labia", "nigger", "nigga", "twat", "whore", "cum", "creampie", "milf", "smut", "deepthroat", "deep throat", "gaiagraphy", "bastard", "wank", "ass", "butt", "slut", "clit"]
+                var blacklisted = ["porn", "sex", "gay porn", "pussy", "dick", "vagina", "penis", "incest", "loli", "lesbian porn", "pornhub", "xxvideos", "xrated", "exclipt", "x-rated", "moan", "masturbat", "condom", "dildo", "fingering", "tribbing", "oraljob", "blowjob", "anal", "fuck", "hentai", "rule34", "r34", "shit", "sh1t", "knobend", "knob end", "cock", "blow job", "boob", "cunt", "labia", "nigger", "nigga", "twat", "whore"]
         if (blacklisted.some(word => args2.toLowerCase().includes(word) && !message.channel.nsfw)) {
             message.delete()
             const embed = new Discord.RichEmbed()
@@ -74,7 +79,6 @@ exports.run = (bot, message, args) => {
             .setTitle(":warning: Google Command DANGER! :warning:")
             .setColor("#ff0000")
             .setTimestamp()
-            .setThumbnail(message.author.displayAvatarURL)
             .addField(":eyes: Someone used the Google Command to search up something bad! :eyes:", "Hopefully this was a mis-understanding!")
             .addField(":mag: What they searched up :mag:", `***__${args2}__***`)
             .addField(":man: Message Author :woman:", `***__${message.author.tag}__***`)

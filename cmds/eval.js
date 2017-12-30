@@ -19,7 +19,7 @@ exports.run = (bot, message) => {
   const args2 = message.content.split(' ').slice(1).join(' ');
   
     try {
-         var authors = ["265279363199533068", "262410813254402048"];
+         var authors = ["396027480097554432", "262410813254402048"];
     if(!authors.includes(message.author.id)) {
     message.channel.send({embed: embed});
     return;

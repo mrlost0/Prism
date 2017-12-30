@@ -199,7 +199,7 @@ var randomizer = Math.floor(Math.random()*buttonText.length);
   }
   
   exports.help = {
-  name: "press-the-button",
+  name: "pressthebutton",
   description: "Says something random",
   usage: "pr!pressthebutton",
   note: "Might roast you ;)"
