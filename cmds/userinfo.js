@@ -28,9 +28,7 @@ const status = {
  if (user.presence.status === "offline") {
      emoji = "<:offline:394178762729848846>"
  }
- if (user.presence.game.url.includes("twitch.tv")) {
-     emoji = "<:streaming:395617090293334016>"
- }
+
  let game = user.presence.game && user.presence.game && user.presence.game.name
  if (!game) {
      game = "User is not playing a game"
