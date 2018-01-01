@@ -61,13 +61,13 @@ exports.run = (bot, message) => {
           var embed3 = new Discord.RichEmbed()
           .setTitle("Oops!")
           .setTimestamp()
-          .setColor("RANDOM")
+          .setColor("#ffff66")
           .addField(":warning: I guess the eval was too much! :warning: \nI generated a hastebin link instead! Here you go!", r, true)
           message.channel.send({ embed: embed3 })
 })} else {
         var embed2 = new Discord.RichEmbed()
         .setTitle("Evaled:")
-        .setColor(randomColor)
+        .setColor("#3399ff")
         .addField("Evaled: :inbox_tray:",  `\`\`\`js\n${code}\n\`\`\``)
         .addField("Output: :outbox_tray:", `\`\`\`js\n${clean(evaled)}\n\`\`\``)
         message.channel.send({embed : embed2 });
@@ -79,7 +79,7 @@ exports.run = (bot, message) => {
           var embed3 = new Discord.RichEmbed()
           .setTitle("Oops!")
           .setTimestamp()
-          .setColor("RANDOM")
+          .setColor("#ffff66")
           .addField(":warning: I guess the eval was too much! It also errored! :warning: \nI generated a hastebin link instead! Here you go!", r, true)
           message.channel.send({ embed: embed3 })
 })}
