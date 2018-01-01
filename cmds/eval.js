@@ -1,6 +1,6 @@
 const Discord = require ("discord.js");
 const hastebin = require('hastebin-gen');
-const settings = require('../Storage/botsettings.json');
+
 exports.run = (bot, message) => {
     
     var embed = new Discord.RichEmbed()
@@ -36,12 +36,12 @@ exports.run = (bot, message) => {
       if (typeof evaled !== "string")	
         evaled = require("util").inspect(evaled);
         
-        if (clean(evaled).includes(settings.token)) {
+        if (clean(evaled).includes(process.env.BOT_TOKEN)) {
           message.delete()
           message.channel.send("That isnt a good idea cause it includes the bot token in it")
           return;
         }
-                if (code.includes(settings.token)) {
+                if (code.includes(process.env.BOT_TOKEN)) {
                   message.delete()
           message.channel.send("That isnt a good idea cause it includes the bot token in it")
           return;
