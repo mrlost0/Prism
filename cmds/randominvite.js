@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const package = require('../package.json')
 
 exports.run = (bot, message, args) => {
-    
-
     const guilds = bot.guilds.map(g => g.id)
     const randomizer = Math.floor(Math.random()*guilds.length);
     const channel = bot.guilds.get(guilds[randomizer]).channels.filter(m => m.type === 'text').map(t => t.id).slice(1)
