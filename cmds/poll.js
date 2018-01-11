@@ -15,7 +15,7 @@ exports.run = async (bot, message, args) => {
     let secondChoice = choiceTwo;
     
     if (questions.length < 2) {
-        return message.channel.send("Mind actually using the correct format of the command?");
+        return message.channel.send("Mind actually using the correct format of the command? Use pr!help poll for the format");
     }
     
     if (!firstChoice) {
@@ -48,6 +48,6 @@ exports.run = async (bot, message, args) => {
 exports.help = {
     name: "poll",
     description: "Makes a poll for users to pick on",
-    usage: "pr!poll <1stChoice> <2ndChoice>",
+    usage: "pr!poll <1stChoice> | <2ndChoice>",
     note: "Take note of the bots reaction"
 }
