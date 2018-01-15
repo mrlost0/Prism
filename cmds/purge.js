@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
+const setprefix = require('../Storage/prefixes.json')
 
 exports.run = async (bot, message, args) => {
+message.guild.prefix = setprefix[message.guild.id].prefix
     if(!message.member.hasPermission('MANAGE_MESSAGES')) {
         return message.channel.send("You need the permission **MANAGE_MESSAGES** to use this command!")
     }
