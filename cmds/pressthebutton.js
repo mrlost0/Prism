@@ -202,5 +202,5 @@ var randomizer = Math.floor(Math.random()*buttonText.length);
   name: "pressthebutton",
   description: "Says something random",
   usage: "pr!pressthebutton",
-  note: "Might roast you ;)"
+  note: "Might roast you ;P"
   }

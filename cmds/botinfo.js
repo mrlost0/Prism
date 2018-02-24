@@ -12,7 +12,7 @@ exports.run = async(bot, message, args) => {
     .setTitle(`Info about ${bot.user.tag}`)
 	.setThumbnail(message.author.displayAvatarURL)
 	.setColor("RANDOM")
-	.addField("Memory usage", `${Math.round(used * 100) / 100} MB`, true)
+	.addField(":regional_indicator_m: Memory usage :regional_indicator_m:", `***>***__${Math.round(used * 100) / 100} MB__`, true)
 	.addField("CPU Usage", `${Math.round(cpu * 100) / 100}%`, true)
 	.addField("Node Version", `${package.engines.node}`, true)
 	.addField("Bot Authors", `${package.author}`, true)

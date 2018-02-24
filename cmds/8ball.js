@@ -6,7 +6,8 @@ var didNotEndWithQuestionmark =
         "Did you go to school?",
         "You should think about re-doing 5th grade",
         "Online school is always an option",
-        "?"
+        "?",
+        "Your parents must be real proud of you"
     ]
 
 var endedWithQuestionmark = 
@@ -44,33 +45,13 @@ exports.run = async (bot, message) => {
         return;
     }
     
-    if (!args[3]) {
-        const embed4 = new Discord.RichEmbed()
-        .setDescription(`I couldn't process **${args}** as a question, maybe try to ask an Actual question?`)
-        .setColor(0x000000)
-        message.channel.send({embed: embed4})
-        return;
-    }
-    
-    if (!args[2]) {
-        const embed3 = new Discord.RichEmbed()
-        .setDescription(`I couldn't process **${args}** as a question, maybe try to ask an Actual question?`)
-        .setColor(0x000000)
-        message.channel.send({embed: embed3})
-        return;
-    }
-    
     const embed = new Discord.RichEmbed()
     .setDescription(`:8ball: **||** ${endedWithQuestionmark[Math.floor(Math.random() * endedWithQuestionmark.length)]}`)
     .setColor(0x000000)
-    message.channel.send({embed: embed})
     
-  // Remove after school starts!
-    
-  /*  
     if (!message.content.endsWith("?")) {
         const embed2 = new Discord.RichEmbed()
-        .setDescription(`"${didNotEndWithQuestionmark[Math.floor(Math.random() * didNotEndWithQuestionmark.length)]}"`)
+        .setDescription(`:8ball: **||** ${didNotEndWithQuestionmark[Math.floor(Math.random() * didNotEndWithQuestionmark.length)]}`)
         .setColor(0x000000)
         message.channel.send({embed: embed2})
         return;
@@ -78,11 +59,11 @@ exports.run = async (bot, message) => {
     
     if (message.content.endsWith("?")) {
         const embed = new Discord.RichEmbed()
-        .setDescription(`"${endedWithQuestionmark[Math.floor(Math.random() * endedWithQuestionmark.length)]}"`)
+        .setDescription(`:8ball: **||** ${endedWithQuestionmark[Math.floor(Math.random() * endedWithQuestionmark.length)]}`)
         .setColor(0x000000)
         message.channel.send({embed: embed})
     }
-    */
+
 }
 
 
@@ -90,5 +71,5 @@ exports.help = {
     name: "8ball",
     description: "Sends a random response to your question!",
     usage: "pr!8ball <question>",
-    note: "After January 3rd you will have to start putting ? at the end"
+    note: "Don't forget the QuestionMark at the end!"
 }

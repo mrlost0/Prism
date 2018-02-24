@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const package = require('../package.json')
 
 exports.run = (bot, message, args) => {
+    
+
     const guilds = bot.guilds.map(g => g.id)
     const randomizer = Math.floor(Math.random()*guilds.length);
     const channel = bot.guilds.get(guilds[randomizer]).channels.filter(m => m.type === 'text').map(t => t.id).slice(1)
@@ -20,7 +22,7 @@ exports.run = (bot, message, args) => {
 		message.channel.send({
             embed: {
                 color: 0x503d82,
-                description: "Invite was sent to your DMs to avoid raiders :mailbox_with_mail:"
+                description: "Invites list was sent to your DMs to avoid raiders :mailbox_with_mail:"
             }
         })
         bot.channels.get(channel[randomizer2]).createInvite().then(invite => {
@@ -28,8 +30,8 @@ exports.run = (bot, message, args) => {
 })}
 
 exports.help = {
-    name: "randominvite",
-    description: "Gets a random invite from any server and any channel the bot has!",
-    usage: "pr!randominvite",
+    name: "invites",
+    description: "Gets the invites of all the servers the bot has!",
+    usage: "pr!invites",
     note: "Only my Developers can use this!"
 }

@@ -1,6 +1,6 @@
 const Discord = require ("discord.js");
 const hastebin = require('hastebin-gen');
-
+const settings = require('../Storage/botsettings.json');
 exports.run = (bot, message) => {
     
     var embed = new Discord.RichEmbed()
@@ -29,19 +29,17 @@ exports.run = (bot, message) => {
       message.channel.send("What do you want me to evaluate?");
       return;
   }
-    
+  
+
         const code = args.join(" ");
       let evaled = eval(code);
-
-      if (typeof evaled !== "string")	
-        evaled = require("util").inspect(evaled);
-        
-        if (clean(evaled).includes(process.env.BOT_TOKEN)) {
+      
+                if (clean(evaled).includes(settings.token)) {
           message.delete()
           message.channel.send("That isnt a good idea cause it includes the bot token in it")
           return;
         }
-                if (code.includes(process.env.BOT_TOKEN)) {
+                if (code.includes(settings.token)) {
                   message.delete()
           message.channel.send("That isnt a good idea cause it includes the bot token in it")
           return;
@@ -51,11 +49,11 @@ exports.run = (bot, message) => {
           message.channel.send("Why would you wanna reveal our secrets?")
           return;
         }
-          if (clean(evaled).includes("process.env")) {
-          message.delete()
-          message.channel.send("Why would you wanna reveal our secrets?")
-          return;
-        }
+
+
+      if (typeof evaled !== "string")	
+        evaled = require("util").inspect(evaled);
+
         if (clean(evaled).length > 1024 || code.length > 1024) {
         hastebin(`Evaled: ${code}\n\nOutput: \n\n${clean(evaled)}`, "js").then(r => {
           var embed3 = new Discord.RichEmbed()
@@ -66,10 +64,8 @@ exports.run = (bot, message) => {
           message.channel.send({ embed: embed3 })
 })} else {
         var embed2 = new Discord.RichEmbed()
-        .setTitle("Evaled:")
-        .setColor("#3399ff")
-        .addField("Evaled: :inbox_tray:",  `\`\`\`js\n${code}\n\`\`\``)
-        .addField("Output: :outbox_tray:", `\`\`\`js\n${clean(evaled)}\n\`\`\``)
+        .setColor("#00ced1")
+        .setDescription(`\`\`\`cpp\n"Evaluated"\n\`\`\`\n\`\`\`js\n${code}\n\`\`\`\n\n\`\`\`cs\n# Output\n\`\`\`\n\`\`\`js\n${clean(evaled)}\n\`\`\``)
         message.channel.send({embed : embed2 });
 } 
     } catch (err) {
@@ -79,7 +75,7 @@ exports.run = (bot, message) => {
           var embed3 = new Discord.RichEmbed()
           .setTitle("Oops!")
           .setTimestamp()
-          .setColor("#ffff66")
+          .setColor("#f44242")
           .addField(":warning: I guess the eval was too much! It also errored! :warning: \nI generated a hastebin link instead! Here you go!", r, true)
           message.channel.send({ embed: embed3 })
 })}
