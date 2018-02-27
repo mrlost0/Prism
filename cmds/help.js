@@ -12,6 +12,7 @@ exports.run = (bot, message, args) => {
         message.author.send(`/* Command List *\nYou can use ${prefix}help [commandname] to get details on a specific command!\n-----------------------------------------------------------------------`, {code: "md"})
         message.author.send(`${bot.commands.map(c => `#${prefix}${c.help.name}${' '.repeat(longest - c.help.name.length)}<${c.help.usage}>`).slice(0, 27).join('\n')}`, {code: "cpp"})
         message.author.send(`${bot.commands.map(c => `#${prefix}${c.help.name}${' '.repeat(longest - c.help.name.length)}<${c.help.usage}>`).slice(28, 55).join('\n')}`, {code: "cpp"})
+        message.author.send(`${bot.commands.map(c => `#${prefix}${c.help.name}${' '.repeat(longest - c.help.name.length)}<${c.help.usage}>`).slice(56, 83).join('\n')}`, {code: "cpp"})
         // > Send in channel that we sent commands list
         message.channel.send(":e_mail: Check your DM's :incoming_envelope:")
     } else {
