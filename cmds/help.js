@@ -31,5 +31,5 @@ exports.help = {
     name: "help",
     description: "Shows all of the available commands that are available to be used",
     usage: "pr!help",
-    note: "Shows the available commands
+    note: "Shows the available commands"
 }
