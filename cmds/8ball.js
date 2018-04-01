@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 var didNotEndWithQuestionmark = 
     [
-        "Really hope your english teacher does not see this",
+        "eally hope your english teacher does not see this",
         "Did you go to school?",
         "You should think about re-doing 5th grade",
         "Online school is always an option",
